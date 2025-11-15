@@ -10,6 +10,13 @@ import traceback
 import sys
 from pathlib import Path
 
+import locale
+locale.setlocale(locale.LC_ALL, '')
+sys.stdin.reconfigure(encoding='utf-8')
+sys.stdout.reconfigure(encoding='utf-8')
+sys.stderr.reconfigure(encoding='utf-8')
+os.environ["PYTHONIOENCODING"] = "utf-8"
+
 SLEEP_SECONDS = 30
 
 # ===== SMTP config (Gmail App Password hoặc SMTP khác) =====
@@ -105,7 +112,9 @@ def run_task_once(task):
             check=True,
             text=True,
             capture_output=True,
-            cwd=str(SCRIPT_DIR)  # đảm bảo cwd ổn định
+            cwd=str(SCRIPT_DIR),  # đảm bảo cwd ổn định
+            encoding="utf-8",
+            errors="replace"
         )
 
     except subprocess.CalledProcessError as e:
