@@ -23,7 +23,7 @@ def get_video_duration(file_path):
         return "0:00"
 
 def find_first_vid(first_vd):  # return path, duration
-    base_folder = r'\\nashp\DATABUHP\Nam SEO\Bluey'
+    base_folder = r'\\nashp\DATABUHP\.HP_PROJECTs\Bluey'
     main_folder = os.path.join(base_folder, f"{first_vd} KB")
     target_filename = f"{first_vd} KB.mp4"
     video_extensions = ['.mp4', '.avi', '.mkv', '.mov', '.flv']

@@ -104,7 +104,7 @@ def run_task_once(task):
             cmd,
             check=True,
             text=True,
-            capture_output=False,
+            capture_output=True,
             cwd=str(SCRIPT_DIR)  # đảm bảo cwd ổn định
         )
 

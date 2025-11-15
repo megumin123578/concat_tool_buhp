@@ -5,7 +5,7 @@ import subprocess
 from datetime import datetime
 import pandas as pd
 
-OUTPUT_FILE = r"C:\Users\Admin\Documents\concatenate videos\ref\beca_data.csv"
+OUTPUT_FILE = r"C:\Users\Admin\Documents\concatenate videos\ref\bluey_funtoys_data.csv"
 VIDEO_EXTENSIONS = {'.mp4', '.avi', '.mkv', '.mov'}
 
 def log(msg: str):
@@ -68,6 +68,7 @@ def build_rows(folder):
     files = sorted(get_file_list(folder), key=lambda p: os.path.basename(p).lower())
     rows = []
     for fp in files:
+        log(f"Đang xử lý: {fp}")
         dur = ffprobe_duration_seconds(fp)
         if not dur or dur < 60:
             continue

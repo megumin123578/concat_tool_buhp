@@ -14,7 +14,7 @@ SCOPES = [
 ]
 CREDS_FILE = r"C:\Users\Admin\Documents\concatenate videos\ref\sheet.json" 
 SHEET_NAME = 'Auto_concat_vids_ver2' 
-OUTPUT_DIR = r'\\n8n\D\output_bluey'
+OUTPUT_DIR = r'E:\ghep_\bluey'
 
 MAX_AGE_SECONDS = 0
 USED_LOG_FILE = r"C:\Users\Admin\Documents\concatenate videos\log_file\bluey.log"

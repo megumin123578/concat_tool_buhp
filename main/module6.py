@@ -25,7 +25,7 @@ def get_video_duration(file_path):
         return "0:00"
 
 def find_first_vid(first_vd):  # return path, duration
-    base_folder = r'\\nashp\DATABUHP\Nam SEO\Bluey Khai thác\.Bluey Funtoys\.Đa Up'
+    base_folder = r'\\nashp\DATABUHP\.HP_PROJECTs\Bluey Khai thác\.Bluey Funtoys\.Đa Up'
     video_extensions = ['.mp4', '.avi', '.mkv', '.mov', '.flv']
 
     try:
