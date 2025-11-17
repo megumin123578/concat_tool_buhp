@@ -15,11 +15,11 @@ SCOPES = [
 ]
 CREDS_FILE = r"C:\Users\Admin\Documents\concatenate videos\ref\sheet.json" 
 SHEET_NAME = 'Auto_concat_vids_ver2' 
-OUTPUT_DIR = r'\\n8n\D\output_findtoys'
+OUTPUT_DIR = r'E:\ghep_\findtoys'
 
 MAX_AGE_SECONDS = 55 * 24 * 60 * 60  * 0 
 USED_LOG_FILE = r'C:\Users\Admin\Documents\concatenate videos\log_file\findtoys.log'
-
+SHEET_INDEX = 5
 
 def load_used_videos():
     if os.path.exists(USED_LOG_FILE):
@@ -45,7 +45,7 @@ def clear_excel_file(excel_file):
 def copy_from_ggsheet_to_excel(gspread_client, sheet_name, excel_file):
     try:
         spreadsheet = gspread_client.open(sheet_name)
-        worksheet = spreadsheet.get_worksheet(4)
+        worksheet = spreadsheet.get_worksheet(SHEET_INDEX)
         data = worksheet.get_all_values()
 
         if not data:
@@ -267,7 +267,7 @@ def main():
             original_df = original_df.drop(columns=['number_of_vids'])
         original_df.to_excel(EXCEL_FILE, index=False, engine='openpyxl')
         print("Saved all Excel content into Excel file")
-        excel_to_sheet(EXCEL_FILE, SHEET_NAME,4)
+        excel_to_sheet(EXCEL_FILE, SHEET_NAME, SHEET_INDEX)
         print("Updated Google Sheet.")
     except Exception as e:
         print(f"Error: {e}")
