@@ -29,20 +29,34 @@ def find_first_vid(first_vd):  # return path, duration
     video_extensions = ['.mp4', '.avi', '.mkv', '.mov', '.flv']
 
     try:
-        for root, dirs, files in os.walk(main_folder):
+        if os.path.exists(main_folder):
+            for root, dirs, files in os.walk(main_folder):
+                for file in files:
+                    if any(file.lower().endswith(ext) for ext in video_extensions):
+                        if target_filename.lower() in file.lower():
+                            full_path = os.path.join(root, file)
+                            duration = get_video_duration(full_path)
+                            return full_path, duration
+
+        print(f"Không tìm thấy trong thư mục: {main_folder}")
+        print("Bắt đầu tìm ở toàn bộ Bluey...\n")
+
+        for root, dirs, files in os.walk(base_folder):
             for file in files:
                 if any(file.lower().endswith(ext) for ext in video_extensions):
                     if target_filename.lower() in file.lower():
                         full_path = os.path.join(root, file)
                         duration = get_video_duration(full_path)
+                        print(f"ĐÃ TÌM THẤY trong thư mục con: {root}")
                         return full_path, duration
 
-        print(f"\nKhông tìm thấy video phù hợp với tên chứa '{target_filename}' trong thư mục.")
+        print(f"Không tìm thấy video chứa '{target_filename}' trong toàn bộ Bluey.")
         return None, 0
+
     except Exception as e:
         print("Lỗi:", e)
         return None, 0
-    
+
 
 
 def normalize_video(
